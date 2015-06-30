@@ -1,0 +1,27 @@
+<% content_for(:title, @section.name) %>
+
+<h1> <%= @section.name %></h1>
+
+<% if @section.lessons.any? %>
+  <h4>Here are the lessons for this section</h4>
+  <ul>
+    <% @section.lessons.each do  |lessons| %>
+      <li><%= lesson.name %>: <%= lesson.content %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <h4>There are no sections for this section</h4>
+<% end %>
+
+<p>
+  <%= link_to "Add Lesson", new_chapter_section_lesson_path(@section) %>
+</p>
+<p>
+  <%= link_to "Edit Section", edit_section_path(@section) %>
+</p>
+<p>
+  <%= link_to 'Delete Section', section_path(@section), :method => "delete" %>
+</p>
+<p>
+  <%= link_to "Table of Contents", chapters_path %>
+</p>

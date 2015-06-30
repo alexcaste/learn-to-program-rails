@@ -1,0 +1,27 @@
+<% content_for(:title, @chapter.name) %>
+
+<h1> <%= @chapter.name %></h1>
+
+<% if @chapter.sections.any? %>
+  <h4>Here are the sections for this chapter</h4>
+  <ul>
+    <% @chapter.sections.each do  |section| %>
+      <li><%= link_to section.name, chapter_path(section.chapter) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <h4>There are no sections for this chapter</h4>
+<% end %>
+
+<p>
+  <%= link_to "Add Section", new_chapter_section_path(@chapter) %>
+</p>
+<p>
+  <%= link_to "Edit Chapter", edit_chapter_path(@chapter) %>
+</p>
+<p>
+  <%= link_to 'Delete Chapter', chapter_path(@chapter), :method => "delete" %>
+</p>
+<p>
+  <%= link_to "Table of Contents", chapters_path %>
+</p>

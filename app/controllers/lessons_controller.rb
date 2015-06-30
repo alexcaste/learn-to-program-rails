@@ -22,7 +22,9 @@ class LessonsController < ApplicationController
   end
 
   def new
-    @lesson = Lesson.new
+    @chapter = Chapter.find(params[:chapter_id])
+    @section = Section.find(params[:section_id])
+    @lesson = @chapter.sections.lessons.new
   end
 
     def update
